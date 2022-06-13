@@ -13,8 +13,8 @@ export class AppComponent implements OnInit {
   constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
-    this.getCustomers();
-    console.log(this.customers);
+    // this.getCustomers();
+    // console.log(this.customers);
   }
 
   getCustomers() {
