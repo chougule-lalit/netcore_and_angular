@@ -1,4 +1,4 @@
-﻿using PropertySalePurchase.Entities;
+﻿using PropertySalePurchase.Contract.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace PropertySalePurchase.Contract
 {
-    public interface ICustomerAppService
+    public interface IUserMasterAppService
     {
-        Task<List<Customer>> GetAllCustomerAsync();
+        Task CreateOrUpdateUser(UserMasterCreateUpdateDto input);
     }
 }

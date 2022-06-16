@@ -9,14 +9,9 @@ namespace PropertySalePurchase.Data
 {
     public class PropertySalePurchaseDbContext : DbContext
     {
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<UserMaster> UserMasters { get; set; }
         public PropertySalePurchaseDbContext(DbContextOptions options) : base(options)
         {
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
         }
     }
 }

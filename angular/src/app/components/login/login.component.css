@@ -1,0 +1,26 @@
+.example-form {
+    min-width: 250px;
+    max-width: 700px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+
+  mat-dialog-title{
+    text-align: center;
+  }
+
+  .my-class{
+    width: 100%!important;
+    min-width: unset!important;
+}
+
+mat-dialog-content{
+  width: 60%!important;;
+}

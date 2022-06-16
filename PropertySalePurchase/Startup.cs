@@ -34,7 +34,8 @@ namespace PropertySalePurchase
             services.AddDbContext<PropertySalePurchaseDbContext>(x => x.UseNpgsql(_configuration.GetConnectionString("PostgreSQL")));
 
             //services.AddDbContext<PropertySalePurchaseDbContext>(x => x.UseSqlServer(_configuration.GetConnectionString("SQLServer")));
-            services.AddTransient<ICustomerAppService, CustomerAppService>();
+
+            services.AddTransient<IUserMasterAppService, UserMasterAppService>();
 
             services.AddCors(options =>
             {
@@ -50,6 +51,9 @@ namespace PropertySalePurchase
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PropertySalePurchase", Version = "v1" });
             });
+
+            //Auto mapper
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
