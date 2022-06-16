@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PropertySalePurchase.Entities
 {
-    public class UserMaster
+    public class Enquiry
     {
         public int Id { get; set; }
 
@@ -13,12 +13,10 @@ namespace PropertySalePurchase.Entities
 
         public string LastName { get; set; }
 
-        public string Email { get; set; }
-
         public string Phone { get; set; }
 
-        public RoleMaster Role { get; set; }
-        
-        public int RoleId { get; set; }
+        public string Email { get; set; }
+
+        public string Remark { get; set; }
     }
 }

@@ -14,7 +14,13 @@ namespace PropertySalePurchase.Contract.Dto
 
         public string LastName { get; set; }
 
-        public RoleEnum Role { get; set; }
+        public string Email { get; set; }
+
+        public string Phone { get; set; }
+
+        public int RoleId { get; set; }
+
+        public string RoleName { get; set; }
     }
 
     public class UserMasterCreateUpdateDto
@@ -25,6 +31,19 @@ namespace PropertySalePurchase.Contract.Dto
 
         public string LastName { get; set; }
 
-        public RoleEnum Role { get; set; }
+        public string Email { get; set; }
+
+        public string Phone { get; set; }
+
+        public int RoleId { get; set; }
+    }
+
+    public class GetUserInput
+    {
+        public int MaxResultCount { get; set; } = 10;
+
+        public int SkipCount { get; set; }
+
+        public string Search { get; set; }
     }
 }

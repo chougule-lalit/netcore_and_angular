@@ -9,5 +9,12 @@ namespace PropertySalePurchase.Contract
     public interface IUserMasterAppService
     {
         Task CreateOrUpdateUser(UserMasterCreateUpdateDto input);
+
+        Task<PagedResultDto<UserMasterDto>> FetchUserListAsync(GetUserInput input);
+
+        Task<UserMasterDto> GetUserAsync(int id);
+
+        Task DeleteUserAsync(int id);
+
     }
 }

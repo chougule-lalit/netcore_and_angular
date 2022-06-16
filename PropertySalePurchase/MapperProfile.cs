@@ -12,8 +12,15 @@ namespace PropertySalePurchase
     {
         public MapperProfile()
         {
-            CreateMap<UserMaster, UserMasterDto>().ReverseMap();
-            CreateMap<UserMaster, UserMasterCreateUpdateDto>().ReverseMap();
+            CreateMap<UserMaster, UserMasterDto>()
+                .ForMember(dest => dest.RoleName, opt => opt.Ignore())
+                .ReverseMap();
+
+            CreateMap<UserMaster, UserMasterCreateUpdateDto>()
+                .ReverseMap();
+
+            CreateMap<RoleMaster, RoleMasterDto>()
+                .ReverseMap();
         }
     }
 }

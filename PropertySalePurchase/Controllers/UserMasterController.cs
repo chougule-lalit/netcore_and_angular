@@ -23,5 +23,26 @@ namespace PropertySalePurchase.Controllers
         {
             return _userMasterAppService.CreateOrUpdateUser(input);
         }
+
+        [HttpDelete]
+        [Route("delete")]
+        public virtual Task DeleteUserAsync(int id)
+        {
+            return _userMasterAppService.DeleteUserAsync(id);
+        }
+
+        [HttpGet]
+        [Route("getUser")]
+        public virtual Task<UserMasterDto> GetUserAsync(int id)
+        {
+            return _userMasterAppService.GetUserAsync(id);
+        }
+
+        [HttpPost]
+        [Route("fetchUserList")]
+        public virtual Task<PagedResultDto<UserMasterDto>> FetchUserListAsync(GetUserInput input)
+        {
+            return _userMasterAppService.FetchUserListAsync(input);
+        }
     }
 }

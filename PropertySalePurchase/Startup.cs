@@ -27,7 +27,7 @@ namespace PropertySalePurchase
 
         public IConfiguration _configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -36,6 +36,7 @@ namespace PropertySalePurchase
             //services.AddDbContext<PropertySalePurchaseDbContext>(x => x.UseSqlServer(_configuration.GetConnectionString("SQLServer")));
 
             services.AddTransient<IUserMasterAppService, UserMasterAppService>();
+            services.AddTransient<IRoleMasterAppService, RoleMasterAppService>();
 
             services.AddCors(options =>
             {
@@ -56,7 +57,7 @@ namespace PropertySalePurchase
             services.AddAutoMapper(typeof(Startup));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
