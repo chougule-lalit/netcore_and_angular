@@ -21,6 +21,9 @@ namespace PropertySalePurchase
 
             CreateMap<RoleMaster, RoleMasterDto>()
                 .ReverseMap();
+
+            CreateMap<Enquiry, EnquiryDto>()
+                .ReverseMap();
         }
     }
 }
