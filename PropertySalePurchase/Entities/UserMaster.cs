@@ -17,6 +17,8 @@ namespace PropertySalePurchase.Entities
 
         public string Phone { get; set; }
 
+        public string Password { get; set; }
+
         public RoleMaster Role { get; set; }
         
         public int RoleId { get; set; }

@@ -7,9 +7,9 @@ namespace PropertySalePurchase.Entities
 {
     public enum RoleEnum
     {
-        Admin,
-        Buyer,
-        Seller,
-        Agent
+        Admin = 1,
+        Buyer = 2,
+        Seller = 3,
+        Agent = 4
     }
 }

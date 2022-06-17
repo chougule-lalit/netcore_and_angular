@@ -33,6 +33,13 @@ namespace PropertySalePurchase.Controllers
             return _roleMasterAppService.DeleteRoleAsync(id);
         }
 
+        [HttpPost]
+        [Route("fetchRolesList")]
+        public virtual Task<PagedResultDto<RoleMasterDto>> FetchRolesListAsync(GetRoleInputDto input)
+        {
+            return _roleMasterAppService.FetchRolesListAsync(input);
+        }
+
         [HttpGet]
         [Route("getRole")]
         public virtual Task<RoleMasterDto> GetRoleAsync(int id)

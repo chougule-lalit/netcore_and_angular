@@ -11,4 +11,9 @@ namespace PropertySalePurchase.Contract.Dto
 
         public string Name { get; set; }
     }
+
+    public class GetRoleInputDto: PagedResultInput
+    {
+        
+    }
 }

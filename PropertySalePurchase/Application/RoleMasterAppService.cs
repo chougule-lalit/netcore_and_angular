@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PropertySalePurchase.Application
 {
-    public class RoleMasterAppService: IRoleMasterAppService
+    public class RoleMasterAppService : IRoleMasterAppService
     {
         private readonly PropertySalePurchaseDbContext _dbContext;
         private readonly IMapper _mapper;
@@ -61,6 +61,24 @@ namespace PropertySalePurchase.Application
             {
                 _dbContext.RoleMasters.Remove(user);
             }
+        }
+
+        public async Task<PagedResultDto<RoleMasterDto>> FetchRolesListAsync(GetRoleInputDto input)
+        {
+            var roles = await _dbContext.RoleMasters.ToListAsync();
+
+            if (!string.IsNullOrEmpty(input.Search))
+                roles = roles.Where(x => input.Search.ToLower().Contains(x.Name.ToLower())).ToList();
+
+            var count = roles.Count;
+
+            var returnData = roles.Skip(input.SkipCount).Take(input.MaxResultCount).ToList();
+
+            return new PagedResultDto<RoleMasterDto>
+            {
+                Items = _mapper.Map<List<RoleMasterDto>>(returnData),
+                TotalCount = count
+            };
         }
     }
 }

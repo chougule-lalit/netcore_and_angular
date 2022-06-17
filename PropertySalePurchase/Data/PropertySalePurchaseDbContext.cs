@@ -25,9 +25,20 @@ namespace PropertySalePurchase.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<RoleMaster>().HasData(
+                new RoleMaster { Id = Convert.ToInt32(RoleEnum.Admin), Name = RoleEnum.Admin.ToString() },
+                new RoleMaster { Id = Convert.ToInt32(RoleEnum.Buyer), Name = RoleEnum.Buyer.ToString() },
+                new RoleMaster { Id = Convert.ToInt32(RoleEnum.Seller), Name = RoleEnum.Seller.ToString() },
+                new RoleMaster { Id = Convert.ToInt32(RoleEnum.Agent), Name = RoleEnum.Agent.ToString() }
+                );
+
             modelBuilder.Entity<UserMaster>()
                 .HasOne(s => s.Role)
                 .WithMany().HasForeignKey(x => x.RoleId);
+
+            modelBuilder.Entity<UserMaster>().HasData(
+                new UserMaster { Email = "admin@admin.com", FirstName = "admin", LastName = "admin", Id = 1, Password = "admin", Phone = "9878656789", RoleId = Convert.ToInt32(RoleEnum.Admin) }
+                );
 
             modelBuilder.Entity<CityMaster>()
                 .HasOne(s => s.State)

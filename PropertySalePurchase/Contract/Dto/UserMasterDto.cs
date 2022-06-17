@@ -36,14 +36,11 @@ namespace PropertySalePurchase.Contract.Dto
         public string Phone { get; set; }
 
         public int RoleId { get; set; }
+
+        public string Password { get; set; }
     }
 
-    public class GetUserInput
+    public class GetUserInput : PagedResultInput
     {
-        public int MaxResultCount { get; set; } = 10;
-
-        public int SkipCount { get; set; }
-
-        public string Search { get; set; }
     }
 }
