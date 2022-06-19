@@ -1,87 +1,135 @@
 <div *ngIf="loginOrRegister">
-    <h1 mat-dialog-title>Login</h1>
-    <div mat-dialog-content class="col">
-        <form class="example-form">
 
-            <table class="example-full-width" cellspacing="0">
-                <tr>
-                    <td>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Email</mat-label>
-                            <input matInput type="email">
-                        </mat-form-field>
-                    </td>
-                </tr>
-            </table>
 
-            <table class="example-full-width" cellspacing="0">
-                <tr>
-                    <td>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Password</mat-label>
-                            <input matInput type="password">
-                        </mat-form-field>
-                    </td>
-                </tr>
-            </table>
-            <table class="example-full-width" cellspacing="0">
-                <tr>
-                    <td>
-                        <button mat-raised-button color="primary" class="my-class">Login</button>
-                    </td>
-                    <td>
-                        <button mat-raised-button color="accent" class="my-class"
-                            (click)="toggleRegistration()">Register</button>
-                    </td>
-                </tr>
-            </table>
-        </form>
+    <div class="login-container">
+        <div class="login-content">
+            <mat-toolbar class="login-toolbar" color="primary">Login</mat-toolbar>
+            <mat-card>
+
+                <mat-form-field>
+                    <mat-icon matPrefix>person_outline</mat-icon>
+                    <input autofocus type="text" matInput placeholder="Username">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-icon matPrefix>lock_outline</mat-icon>
+                    <input type="password" autocomplete="false" matInput placeholder="Password">
+                </mat-form-field>
+
+                <button type="submit" mat-raised-button color="primary">LOGIN</button>
+
+                <br>
+                <button mat-raised-button color="accent" class="my-class"
+                    (click)="toggleRegistration(false)">Register</button>
+
+
+
+
+            </mat-card>
+        </div>
     </div>
+
 </div>
 
-<div *ngIf="!loginOrRegister">
-    <h1 mat-dialog-title>Register</h1>
-    <div mat-dialog-content>
-        <form class="example-form">
-            <table class="example-full-width" cellspacing="0">
-                <tr>
-                    <td>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>First name</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-                    </td>
-                    <td>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Last name</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-                    </td>
-                </tr>
-            </table>
 
-            <table class="example-full-width" cellspacing="0">
-                <tr>
-                    <td>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Email</mat-label>
-                            <input matInput type="email">
-                        </mat-form-field>
-                    </td>
-                </tr>
-            </table>
 
-            <table class="example-full-width" cellspacing="0">
-                <tr>
-                    <td>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Password</mat-label>
-                            <input matInput type="password">
-                        </mat-form-field>
-                    </td>
-                </tr>
-            </table>
-            <button mat-raised-button color="primary" class="my-class">Register</button>
-        </form>
+
+<div class="login-container" *ngIf="!loginOrRegister">
+    <div class="login-content">
+        <mat-toolbar class="login-toolbar" color="primary">REGISTER</mat-toolbar>
+        <mat-card>
+
+            <form [formGroup]="userForm">
+
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>First name</mat-label>
+                    <input matInput formControlName="firstName">
+                    <mat-error *ngIf="
+                                                          !userForm.controls['firstName'].valid &&
+                                                          userForm.controls['firstName'].touched
+                                                        ">
+                        First name is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Last name</mat-label>
+                    <input matInput formControlName="lastName">
+                    <mat-error *ngIf="
+                                                 !userForm.controls['lastName'].valid &&
+                                                   userForm.controls['lastName'].touched
+                                                                                    ">
+                        Last name is required
+                    </mat-error>
+                </mat-form-field>
+
+
+
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="email">
+                    <mat-error *ngIf="
+                                                                                 !userForm.controls['email'].valid &&
+                                                                                   userForm.controls['email'].touched
+                                                                                                                    ">
+                        Email is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Phone</mat-label>
+                    <input matInput formControlName="phone">
+                    <mat-error
+                        *ngIf="
+                                                                                                                 !userForm.controls['phone'].valid &&
+                                                                                                                   userForm.controls['phone'].touched
+                                                                                                                                                    ">
+                        Phone is required
+                    </mat-error>
+                </mat-form-field>
+
+
+
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Role</mat-label>
+
+                    <mat-select matInput formControlName="roleId">
+                        <mat-option [value]="2">
+                            Buyer
+                        </mat-option>
+                        <mat-option [value]="3">
+                            Seller
+                        </mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="
+                                                                                                                 !userForm.controls['roleId'].valid &&
+                                                                                                                   userForm.controls['roleId'].touched
+                                                                                                                                                    ">
+                        Role is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password">
+                    <mat-error
+                        *ngIf="
+                                                                                                                                                 !userForm.controls['password'].valid &&
+                                                                                                                                                   userForm.controls['password'].touched
+                                                                                                                                                                                    ">
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
+
+
+                <hr>
+                <div class="socialMediaFlex">
+                    <button (click)="onSubmit()" type="submit" mat-raised-button color="primary"
+                        [disabled]="!userForm.valid">Register</button>
+                    <button mat-raised-button color="accent" (click)="toggleRegistration(true)">Login</button>
+                </div>
+            </form>
+        </mat-card>
     </div>
 </div>

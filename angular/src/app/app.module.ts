@@ -8,7 +8,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +16,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AboutComponent } from './components/about/about.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './components/login/login.component';
+import { UserandroleComponent } from './components/userandroles/userandrole/userandrole.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { LoginComponent } from './components/login/login.component';
     SidenavComponent,
     DashboardComponent,
     AboutComponent,
-    LoginComponent
+    LoginComponent,
+    UserandroleComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,9 +43,13 @@ import { LoginComponent } from './components/login/login.component';
     MatCardModule,
     MatTableModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatPaginatorModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
