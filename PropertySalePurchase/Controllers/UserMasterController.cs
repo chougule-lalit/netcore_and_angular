@@ -25,14 +25,14 @@ namespace PropertySalePurchase.Controllers
         }
 
         [HttpDelete]
-        [Route("delete")]
+        [Route("delete/{id}")]
         public virtual Task DeleteUserAsync(int id)
         {
             return _userMasterAppService.DeleteUserAsync(id);
         }
 
         [HttpGet]
-        [Route("getUser")]
+        [Route("getUser/{id}")]
         public virtual Task<UserMasterDto> GetUserAsync(int id)
         {
             return _userMasterAppService.GetUserAsync(id);

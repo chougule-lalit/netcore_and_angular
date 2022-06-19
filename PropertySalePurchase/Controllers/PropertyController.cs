@@ -27,7 +27,7 @@ namespace PropertySalePurchase.Controllers
         }
 
         [HttpDelete]
-        [Route("delete")]
+        [Route("delete/{id}")]
         public virtual Task DeleteAsync(int id)
         {
             return _propertyAppService.DeleteAsync(id);
@@ -41,7 +41,7 @@ namespace PropertySalePurchase.Controllers
         }
 
         [HttpGet]
-        [Route("get")]
+        [Route("get/{id}")]
         public virtual Task<EnquiryDto> GetAsync(int id)
         {
             return _propertyAppService.GetAsync(id);

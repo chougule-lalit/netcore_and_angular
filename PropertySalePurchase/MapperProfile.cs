@@ -38,6 +38,12 @@ namespace PropertySalePurchase
 
             CreateMap<PropertyStatus, PropertyStatusDto>()
                 .ReverseMap();
+
+            CreateMap<CityMaster, CityMasterDto>()
+                .ReverseMap();
+
+            CreateMap<StateMaster, StateMasterDto>()
+                .ReverseMap();
         }
     }
 }

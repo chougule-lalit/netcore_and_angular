@@ -27,7 +27,7 @@ namespace PropertySalePurchase.Controllers
         }
 
         [HttpDelete]
-        [Route("delete")]
+        [Route("delete/{id}")]
         public virtual Task DeleteRoleAsync(int id)
         {
             return _roleMasterAppService.DeleteRoleAsync(id);
@@ -41,7 +41,7 @@ namespace PropertySalePurchase.Controllers
         }
 
         [HttpGet]
-        [Route("getRole")]
+        [Route("getRole/{id}")]
         public virtual Task<RoleMasterDto> GetRoleAsync(int id)
         {
             return _roleMasterAppService.GetRoleAsync(id);

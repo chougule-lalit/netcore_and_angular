@@ -38,6 +38,7 @@ namespace PropertySalePurchase
             services.AddTransient<IUserMasterAppService, UserMasterAppService>();
             services.AddTransient<IRoleMasterAppService, RoleMasterAppService>();
             services.AddTransient<IPropertyAppService, PropertyAppService>();
+            services.AddTransient<IStateCityAppService, StateCityAppService>();
 
             services.AddCors(options =>
             {
