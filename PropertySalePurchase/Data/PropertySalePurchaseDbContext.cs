@@ -60,6 +60,16 @@ namespace PropertySalePurchase.Data
                 .HasOne(s => s.PropertyStatus)
                 .WithMany().HasForeignKey(x => x.PropertyStatusId);
 
+            modelBuilder.Entity<PropertyType>().HasData(
+                new PropertyType { Id = 1, Description = "Flat", Type = "Flat" },
+                new PropertyType { Id = 2, Description = "Plot", Type = "Plot" },
+                new PropertyType { Id = 3, Description = "Farm", Type = "Farm" }
+               );
+
+            modelBuilder.Entity<PropertyStatus>().HasData(
+                new PropertyStatus { Id = 1, Description = "Ready to sale", Status = "Ready to sale" },
+                new PropertyStatus { Id = 2, Description = "Sold", Status = "Sold" }
+                );
         }
     }
 }

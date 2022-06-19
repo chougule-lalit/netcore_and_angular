@@ -24,6 +24,20 @@ namespace PropertySalePurchase
 
             CreateMap<Enquiry, EnquiryDto>()
                 .ReverseMap();
+
+            CreateMap<PropertyDetail, PropertyDetailDto>()
+                .ForMember(dest => dest.CityName, opt => opt.Ignore())
+                .ForMember(dest => dest.PropertyOwnerName, opt => opt.Ignore())
+                .ForMember(dest => dest.PropertyBuyerName, opt => opt.Ignore())
+                .ForMember(dest => dest.PropertyType, opt => opt.Ignore())
+                .ForMember(dest => dest.PropertyStatus, opt => opt.Ignore())
+                .ReverseMap();
+
+            CreateMap<PropertyType, PropertyTypeDto>()
+                .ReverseMap();
+
+            CreateMap<PropertyStatus, PropertyStatusDto>()
+                .ReverseMap();
         }
     }
 }

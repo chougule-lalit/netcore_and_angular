@@ -97,7 +97,7 @@ namespace PropertySalePurchase.Application
         {
             var output = new LoginOutputDto();
             var user = await _dbContext.UserMasters.FirstOrDefaultAsync(x => x.Email == input.Email);
-            if(user != null)
+            if (user != null)
             {
                 if (input.Password == user.Password)
                 {
@@ -112,5 +112,10 @@ namespace PropertySalePurchase.Application
             return output;
         }
 
+        public async Task<List<UserMasterDto>> GetSellerListAsync()
+        {
+            var data = await _dbContext.UserMasters.Where(x => x.RoleId == Convert.ToInt32(RoleEnum.Seller)).ToListAsync();
+            return _mapper.Map<List<UserMasterDto>>(data);
+        }
     }
 }
