@@ -93,5 +93,24 @@ namespace PropertySalePurchase.Application
             }
         }
 
+        public async Task<LoginOutputDto> LoginAsync(LoginInputDto input)
+        {
+            var output = new LoginOutputDto();
+            var user = await _dbContext.UserMasters.FirstOrDefaultAsync(x => x.Email == input.Email);
+            if(user != null)
+            {
+                if (input.Password == user.Password)
+                {
+                    output.IsSuccess = true;
+                    output.Role = (RoleEnum)user.RoleId;
+                    output.Id = user.Id;
+                }
+                else
+                    return output;
+            }
+
+            return output;
+        }
+
     }
 }

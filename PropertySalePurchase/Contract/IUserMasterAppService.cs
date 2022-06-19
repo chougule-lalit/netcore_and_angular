@@ -16,5 +16,7 @@ namespace PropertySalePurchase.Contract
 
         Task DeleteUserAsync(int id);
 
+        Task<LoginOutputDto> LoginAsync(LoginInputDto input);
+
     }
 }

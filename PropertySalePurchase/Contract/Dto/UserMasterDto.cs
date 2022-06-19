@@ -43,4 +43,20 @@ namespace PropertySalePurchase.Contract.Dto
     public class GetUserInput : PagedResultInput
     {
     }
+
+    public class LoginInputDto
+    {
+        public string Email { get; set; }
+
+        public string Password { get; set; }
+    }
+
+    public class LoginOutputDto
+    {
+        public int Id { get; set; }
+
+        public RoleEnum Role { get; set; }
+
+        public bool IsSuccess { get; set; }
+    }
 }
