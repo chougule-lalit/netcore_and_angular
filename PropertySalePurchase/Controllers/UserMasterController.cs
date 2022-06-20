@@ -3,6 +3,7 @@ using PropertySalePurchase.Contract.Dto;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace PropertySalePurchase.Controllers
 {
@@ -50,6 +51,27 @@ namespace PropertySalePurchase.Controllers
         public virtual Task<LoginOutputDto> LoginAsync(LoginInputDto input)
         {
             return _userMasterAppService.LoginAsync(input);
+        }
+
+        [HttpGet]
+        [Route("getSellerList")]
+        public virtual Task<List<UserDropdownDto>> GetSellerListAsync()
+        {
+            return _userMasterAppService.GetSellerListAsync();
+        }
+
+        [HttpGet]
+        [Route("getBuyerList")]
+        public virtual Task<List<UserDropdownDto>> GetBuyerListAsync()
+        {
+            return _userMasterAppService.GetBuyerListAsync();
+        }
+
+        [HttpGet]
+        [Route("getAgentList")]
+        public virtual Task<List<UserDropdownDto>> GetAgentListAsync()
+        {
+            return _userMasterAppService.GetAgentListAsync();
         }
     }
 }

@@ -18,5 +18,12 @@ namespace PropertySalePurchase.Contract
 
         Task<LoginOutputDto> LoginAsync(LoginInputDto input);
 
+        Task<List<UserDropdownDto>> GetSellerListAsync();
+
+        Task<List<UserDropdownDto>> GetBuyerListAsync();
+
+        Task<List<UserDropdownDto>> GetAgentListAsync();
+
+
     }
 }

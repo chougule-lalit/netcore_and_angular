@@ -112,10 +112,37 @@ namespace PropertySalePurchase.Application
             return output;
         }
 
-        public async Task<List<UserMasterDto>> GetSellerListAsync()
+        public async Task<List<UserDropdownDto>> GetSellerListAsync()
         {
-            var data = await _dbContext.UserMasters.Where(x => x.RoleId == Convert.ToInt32(RoleEnum.Seller)).ToListAsync();
-            return _mapper.Map<List<UserMasterDto>>(data);
+            return await _dbContext.UserMasters.Where(x => x.RoleId == Convert.ToInt32(RoleEnum.Seller))
+                .Select(x=> new UserDropdownDto
+                {
+                    Id = x.Id,
+                    Name = $"{x.FirstName} {x.LastName}"
+                })
+                .ToListAsync();
+        }
+
+        public async Task<List<UserDropdownDto>> GetBuyerListAsync()
+        {
+            return await _dbContext.UserMasters.Where(x => x.RoleId == Convert.ToInt32(RoleEnum.Buyer))
+                .Select(x => new UserDropdownDto
+                {
+                    Id = x.Id,
+                    Name = $"{x.FirstName} {x.LastName}"
+                })
+                .ToListAsync();
+        }
+
+        public async Task<List<UserDropdownDto>> GetAgentListAsync()
+        {
+            return await _dbContext.UserMasters.Where(x => x.RoleId == Convert.ToInt32(RoleEnum.Agent))
+                .Select(x => new UserDropdownDto
+                {
+                    Id = x.Id,
+                    Name = $"{x.FirstName} {x.LastName}"
+                })
+                .ToListAsync();
         }
     }
 }
