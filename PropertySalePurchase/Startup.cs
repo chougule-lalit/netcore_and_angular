@@ -31,7 +31,8 @@ namespace PropertySalePurchase
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<PropertySalePurchaseDbContext>(x => x.UseNpgsql(_configuration.GetConnectionString("PostgreSQL")));
+            //services.AddDbContext<PropertySalePurchaseDbContext>(x => x.UseNpgsql(_configuration.GetConnectionString("PostgreSQL")));
+            services.AddDbContext<PropertySalePurchaseDbContext>(x => x.UseSqlite(_configuration.GetConnectionString("SQLite")));
 
             //services.AddDbContext<PropertySalePurchaseDbContext>(x => x.UseSqlServer(_configuration.GetConnectionString("SQLServer")));
 
