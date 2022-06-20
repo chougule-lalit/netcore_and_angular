@@ -80,5 +80,14 @@ namespace PropertySalePurchase.Application
                 TotalCount = count
             };
         }
+
+        public async Task<List<RoleDropdownDto>> GetRoleDropdownAsync()
+        {
+            return await _dbContext.RoleMasters.Select(x => new RoleDropdownDto
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToListAsync();
+        }
     }
 }

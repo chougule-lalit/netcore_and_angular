@@ -46,5 +46,12 @@ namespace PropertySalePurchase.Controllers
         {
             return _roleMasterAppService.GetRoleAsync(id);
         }
+
+        [HttpGet]
+        [Route("getRoleDropdown")]
+        public virtual Task<List<RoleDropdownDto>> GetRoleDropdownAsync()
+        {
+            return _roleMasterAppService.GetRoleDropdownAsync();
+        }
     }
 }

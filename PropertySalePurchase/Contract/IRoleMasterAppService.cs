@@ -12,6 +12,6 @@ namespace PropertySalePurchase.Contract
         Task<RoleMasterDto> GetRoleAsync(int id);
         Task DeleteRoleAsync(int id);
         Task<PagedResultDto<RoleMasterDto>> FetchRolesListAsync(GetRoleInputDto input);
-
+        Task<List<RoleDropdownDto>> GetRoleDropdownAsync();
     }
 }
