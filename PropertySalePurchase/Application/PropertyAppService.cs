@@ -38,7 +38,10 @@ namespace PropertySalePurchase.Application
             }
             else
             {
+                var city = await _dbContext.CityMasters.FindAsync(input.CityId);
                 var userToCreate = _mapper.Map<PropertyDetail>(input);
+                if (city != null)
+                    userToCreate.City = city;
                 await _dbContext.AddAsync(userToCreate);
                 await _dbContext.SaveChangesAsync();
             }
