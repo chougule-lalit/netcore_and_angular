@@ -32,7 +32,9 @@ namespace PropertySalePurchase.Application
                 var pd = await _dbContext.PropertyDetails.FirstOrDefaultAsync(x => x.Id == input.Id.Value);
                 if (pd != null)
                 {
+                    var city = await _dbContext.CityMasters.FindAsync(input.CityId);
                     _mapper.Map(input, pd);
+                    pd.City = city;
                     await _dbContext.SaveChangesAsync();
                 }
             }
@@ -47,14 +49,14 @@ namespace PropertySalePurchase.Application
             }
         }
 
-        public async Task<EnquiryDto> GetAsync(int id)
+        public async Task<PropertyDetailDto> GetAsync(int id)
         {
             var data = await _dbContext.PropertyDetails.FirstOrDefaultAsync(x => x.Id == id);
 
             if (data == null)
                 return null;
 
-            return _mapper.Map<EnquiryDto>(data);
+            return _mapper.Map<PropertyDetailDto>(data);
         }
 
         public async Task DeleteAsync(int id)

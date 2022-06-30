@@ -42,7 +42,7 @@ namespace PropertySalePurchase.Controllers
 
         [HttpGet]
         [Route("get/{id}")]
-        public virtual Task<EnquiryDto> GetAsync(int id)
+        public virtual Task<PropertyDetailDto> GetAsync(int id)
         {
             return _propertyAppService.GetAsync(id);
         }

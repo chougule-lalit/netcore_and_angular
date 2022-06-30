@@ -9,7 +9,7 @@ namespace PropertySalePurchase.Contract
     public interface IPropertyAppService
     {
         Task CreateOrUpdateAsync(PropertyDetailDto input);
-        Task<EnquiryDto> GetAsync(int id);
+        Task<PropertyDetailDto> GetAsync(int id);
         Task DeleteAsync(int id);
         Task<PagedResultDto<PropertyDetailDto>> FetchPropertyListAsync(GetPropertyTypeInputDto input);
         Task<List<PropertyTypeDto>> GetPropertyTypeAsync();
