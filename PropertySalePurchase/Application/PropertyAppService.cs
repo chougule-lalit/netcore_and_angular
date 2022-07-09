@@ -66,6 +66,7 @@ namespace PropertySalePurchase.Application
             if (data != null)
             {
                 _dbContext.PropertyDetails.Remove(data);
+                await _dbContext.SaveChangesAsync();
             }
         }
 

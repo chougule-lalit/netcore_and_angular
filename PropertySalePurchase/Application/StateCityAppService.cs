@@ -60,6 +60,7 @@ namespace PropertySalePurchase.Application
             if (data != null)
             {
                 _dbContext.StateMasters.Remove(data);
+                await _dbContext.SaveChangesAsync();
             }
         }
 

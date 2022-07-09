@@ -60,6 +60,7 @@ namespace PropertySalePurchase.Application
             if (user != null)
             {
                 _dbContext.RoleMasters.Remove(user);
+                await _dbContext.SaveChangesAsync();
             }
         }
 
