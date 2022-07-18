@@ -56,7 +56,13 @@ namespace PropertySalePurchase.Application
             if (data == null)
                 return null;
 
-            return _mapper.Map<PropertyDetailDto>(data);
+            var returnData = _mapper.Map<PropertyDetailDto>(data);
+
+            var city = await _dbContext.CityMasters.FirstOrDefaultAsync(x => x.Id == data.CityId);
+            if (city != null)
+                returnData.CityName = city.Name;
+
+            return returnData;
         }
 
         public async Task DeleteAsync(int id)
