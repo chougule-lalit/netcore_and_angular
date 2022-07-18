@@ -1,0 +1,98 @@
+<div class="container py-4">
+  <mat-card>
+    <mat-card-title>
+      <div class="d-flex align-items-center justify-content-between">
+        <span>Property List</span>
+        <button mat-button mat-raised-button color="primary" (click)="add()">
+          <mat-icon>add</mat-icon>
+          Add Property
+        </button>
+      </div>
+    </mat-card-title>
+
+    <hr>
+    <div class="d-flex align-items-start">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Property Type</mat-label>
+        <mat-select [(value)]="selectedPropertyType">
+          <mat-option *ngFor="let item of propertyTypeHolder" [value]="item.id">{{item.type}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="w-100 ms-2" appearance="fill">
+        <mat-label>Property Status</mat-label>
+        <mat-select [(value)]="selectedPropertyStatus">
+          <mat-option *ngFor="let item of propertyStatusHolder" [value]="item.id">{{item.status}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="w-100 mx-2" appearance="fill">
+        <mat-label>City</mat-label>
+        <mat-select [(value)]="selectedCity">
+          <mat-option *ngFor="let item of cityDropdownHolder" [value]="item.id">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-button mat-raised-button color="primary" (click)="fetchData()">Go</button>
+    </div>
+    <hr class="m-0">
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="propertyOwnerName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Property Owner Name</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.propertyOwnerName }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="propertyBuyerName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Property Buyer Name</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.propertyBuyerName }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="propertyType">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Property Type</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.propertyType }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="propertyStatus">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Property Status</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.propertyStatus }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="cityName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.cityName }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="pincode">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Pin Code</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.pincode }}</mat-cell>
+      </ng-container>
+
+      <!-- actions -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+
+        <mat-cell *matCellDef="let row; let i = index">
+          <button mat-icon-button color="accent" (click)="edit(row)">
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="accent" (click)="delete(row.id)">
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <div class="no-results" [style.display]="dataSource?.length == 0 ? '' : 'none'">
+      No results
+    </div>
+
+    <mat-paginator #paginator [length]="dataSource?.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </mat-card>
+</div>

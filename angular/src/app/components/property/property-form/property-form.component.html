@@ -1,0 +1,95 @@
+<h1 mat-dialog-title>{{mode}} Property</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="mb-2">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Select Property Owner Name</mat-label>
+        <mat-select [(value)]="selectedPropertyOwnerId">
+          <mat-option *ngFor="let item of propertyOwnerHolder" [value]="item.id">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!--<mat-error *ngIf="isSubmitted && f.propertyOwnerName.errors && f.propertyOwnerName.errors.required">-->
+      <!--Property Owner Name is <strong>required</strong>-->
+      <!--</mat-error>-->
+    </div>
+
+    <div class="mb-2">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Select Property Buyer Name</mat-label>
+        <mat-select [(value)]="selectedPropertyBuyerId">
+          <mat-option *ngFor="let item of propertyBuyerHolder" [value]="item.id">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!--<mat-error *ngIf="isSubmitted && f.propertyBuyerName.errors && f.propertyBuyerName.errors.required">-->
+      <!--Property Buyer Name is <strong>required</strong>-->
+      <!--</mat-error>-->
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 mb-2">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Select City</mat-label>
+          <mat-select [(value)]="selectedCityId">
+            <mat-option *ngFor="let item of cityDropdownHolder" [value]="item.id">{{item.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!--<mat-error *ngIf="isSubmitted && f.cityId.errors && f.cityId.errors.required">-->
+        <!--City is <strong>required</strong>-->
+        <!--</mat-error>-->
+      </div>
+      <div class="col-sm-6 mb-2">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Pin Code</mat-label>
+          <input type="text" matInput formControlName="pincode">
+        </mat-form-field>
+        <mat-error *ngIf="isSubmitted && f.pincode.errors && f.pincode.errors.required">
+          Pin Code is <strong>required</strong>
+        </mat-error>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 mb-2">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Select Property Type</mat-label>
+          <mat-select [(value)]="selectedPropertyTypeId">
+            <mat-option *ngFor="let item of propertyTypeHolder" [value]="item.id">{{item.type}}</mat-option>
+          </mat-select>
+          <!-- <mat-error *ngIf="isSubmitted && f.propertyType.errors && f.propertyType.errors.required">
+            Property Type is <strong>required</strong>
+          </mat-error> -->
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6 mb-2">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Select Property Status</mat-label>
+          <mat-select [(value)]="selectedPropertyStatusId">
+            <mat-option *ngFor="let item of propertyStatusHolder" [value]="item.id">{{item.status}}</mat-option>
+          </mat-select>
+          <!-- <mat-error *ngIf="isSubmitted && f.propertyStatus.errors && f.propertyStatus.errors.required">
+            Property Status is <strong>required</strong>
+          </mat-error> -->
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Address 1</mat-label>
+      <textarea matInput formControlName="address1"></textarea>
+      <mat-error *ngIf="isSubmitted && f.address1.errors && f.address1.errors.required">
+        Address 1 is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Address 2</mat-label>
+      <textarea matInput formControlName="address2"></textarea>
+    </mat-form-field>
+    <hr class="my-0">
+    <mat-card-actions align="end">
+      <button mat-button mat-dialog-close>Close</button>
+      <button type="submit" mat-button mat-raised-button color="primary">Submit</button>
+    </mat-card-actions>
+  </form>
+</div>

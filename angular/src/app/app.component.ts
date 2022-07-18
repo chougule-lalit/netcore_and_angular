@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Customer } from './interface/customer';
-import { CustomerService } from './services/customer.service';
+import {Component, OnInit} from '@angular/core';
+import {Customer} from './shared/interfaces/customer';
+import {CustomerService} from './shared/services/customer.service';
+import {AuthService} from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +9,26 @@ import { CustomerService } from './services/customer.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'angular';
   customers: Customer[] = [];
-  constructor(private customerService: CustomerService) { }
 
-  ngOnInit() {
-    // this.getCustomers();
-    // console.log(this.customers);
+  constructor(private customerService: CustomerService, private authService: AuthService) {
   }
 
-  getCustomers() {
+  ngOnInit(): void {
+    // this.getCustomers();
+  }
+
+  getCustomers(): void {
     this.customerService.getTasks().subscribe(result => {
       this.customers = result;
-    })
+    });
+  }
+
+  get isLoggedIn(): any {
+    return JSON.parse(localStorage.getItem('user-details')!);
+  }
+
+  logOut(): void {
+    this.authService.logOut();
   }
 }
