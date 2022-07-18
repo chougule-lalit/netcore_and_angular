@@ -11,25 +11,47 @@ import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AboutComponent } from './components/about/about.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './components/login/login.component';
-import { UserandroleComponent } from './components/userandroles/userandrole/userandrole.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CreateAndUpdateUserComponent } from './components/users-and-roles/create-and-update-user/create-and-update-user.component';
+import { InquiryComponent } from './components/inquiry/inquiry.component';
+import { PropertyComponent } from './components/property/property.component';
+import { StatesComponent } from './components/states/states.component';
+import { CityComponent } from './components/city/city.component';
+import { RoleComponent } from './components/role/role.component';
+import { CreateAndUpdateModalComponent } from './components/inquiry/create-and-update-modal/create-and-update-modal.component';
+import { PropertyFormComponent } from './components/property/property-form/property-form.component';
+import { StateFormComponent } from './components/states/state-form/state-form.component';
+import { CityFormComponent } from './components/city/city-form/city-form.component';
+import { RoleFormComponent } from './components/role/role-form/role-form.component';
+import { UsersComponent } from './components/users-and-roles/users.component';
+import { HomeComponent } from './components/home/home.component';
+import { PropertyDetailsComponent } from './components/property/property-details/property-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidenavComponent,
-    DashboardComponent,
+    HomeComponent,
     AboutComponent,
     LoginComponent,
-    UserandroleComponent,
+    UsersComponent,
+    CreateAndUpdateUserComponent,
+    InquiryComponent,
+    PropertyComponent,
+    StatesComponent,
+    CityComponent,
+    RoleComponent,
+    CreateAndUpdateModalComponent,
+    PropertyFormComponent,
+    StateFormComponent,
+    CityFormComponent,
+    RoleFormComponent,
+    PropertyDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,4 +74,4 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

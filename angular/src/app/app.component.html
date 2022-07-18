@@ -1,5 +1,46 @@
-<app-sidenav></app-sidenav>
-
-<div class="container p-5">
-    <router-outlet></router-outlet>
+<nav class="navbar navbar-expand-lg sticky-top navbar-light navbar-first mat-elevation-z3 py-0">
+  <div class="container">
+    <a class="logo-box" routerLink="/home">
+      <mat-icon>real_estate_agent</mat-icon>
+      <span class="ms-2">Property Sale Purchase</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/property-list">All Properties</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/users">Users</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Masters
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/enquiry']" routerLinkActive="router-link-active">Enquiry</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/property']" routerLinkActive="router-link-active">Property</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/states']" routerLinkActive="router-link-active">States</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/city']" routerLinkActive="router-link-active">City</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/roles']" routerLinkActive="router-link-active">Roles</a></li>
+          </ul> 
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" href="javascript:void(0)" (click)="logOut()">Logout</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="wrapper">
+  <router-outlet></router-outlet>
 </div>
+

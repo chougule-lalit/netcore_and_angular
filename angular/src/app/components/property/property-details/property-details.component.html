@@ -1,0 +1,118 @@
+<section class="property-details py-4">
+  <div class="container">
+    <!--<div  class="card border-0 mat-elevation-z2 mb-3">-->
+      <!--<div class="card-body">-->
+        <!--<div class="row">-->
+          <!--<div class="col-sm-4 left-box pe-2">-->
+            <!--<div class="img-box">-->
+              <!--<img src="assets\img\bg\house-bg.jpg" class="img-fluid" alt="." decoding="async">-->
+            <!--</div>-->
+            <!--<h4 class="text-muted mt-3 no-photo">No photo available for this property</h4>-->
+          <!--</div>-->
+          <!--<div class="col-sm-8 right-box ps-2">-->
+
+            <!--<div class="d-flex align-items-baseline text-nowrap">-->
+              <!--<h2 class="font-weight-bold m-0">₹85.64 L - 2.07 Cr</h2> <span class="text-success ms-3 ">EMI starts at ₹42.52 K</span>-->
+            <!--</div>-->
+
+            <!--<h3 class="font-weight-bold mb-1">Jack Raj Edwin</h3>-->
+
+            <!--<h5 class="font-weight-bold mb-1">By Jack Raj Edwin Landmarks</h5>-->
+
+            <!--<h5 class="font-weight-bold mb-1">1 RK, 1, 2 BHK Flats <span class="ms-2 text-muted"> for sale in Vishakhapattanam</span></h5>-->
+
+            <!--<address class="m-0 p-0">-->
+              <!--21, FatimaGarh, Vishakhapattanam - 357281-->
+            <!--</address>-->
+
+            <!--<div class="d-flex align-baseline py-3">-->
+              <!--<div class="border-end pe-3">-->
+                <!--<h5 class="text-muted mb-0">Possession Starts</h5>-->
+                <!--<h4 class="font-weight-bold mb-0">Sep, 2024</h4>-->
+              <!--</div>-->
+              <!--<div class="ps-3">-->
+                <!--<h5 class="text-muted mb-0">Avg. Price</h5>-->
+                <!--<h4 class="font-weight-bold mb-0">₹30.00 K/sq.ft</h4>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="d-flex align-items-baseline">-->
+              <!--<span class="d-inline-block text-truncate" style="max-width: 470px;">-->
+                <!--Jack Raj Edwin is a residential project in FatimaGarh, Vishakhapattanam...-->
+              <!--</span>-->
+              <!--<span class="text-nowrap">Read more</span>-->
+            <!--</div>-->
+            <!--<hr class="my-2">-->
+            <!--<div class="d-flex align-items-center justify-content-between">-->
+              <!--<div>-->
+                <!--<h4 class="font-weight-bold m-0">Jack Raj Edwin</h4>-->
+                <!--<h5 class="font-weight-bold m-0">Developers</h5>-->
+              <!--</div>-->
+              <!--<div class="d-flex">-->
+                <!--<button class="btn btn-success btn-sm rounded-0">View Phone</button>-->
+                <!--<button class="btn btn-secondary btn-sm rounded-0 ms-2">Contact</button>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div *ngFor="let item of dataSource" class="card border-0 mb-4 mat-elevation-z2">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-4 left-box pe-2">
+            <div class="img-box">
+              <img src="assets\img\bg\house-bg.jpg" class="img-fluid" alt="." decoding="async">
+            </div>
+            <h4 class="text-muted mt-3 no-photo">No photo available for this property</h4>
+          </div>
+          <div class="col-sm-8 right-box ps-2">
+
+            <div class="d-flex align-items-baseline text-nowrap">
+              <h2 class="font-weight-bold m-0">Price on Request</h2>
+            </div>
+
+            <h3 class="font-weight-bold mb-1">{{item.propertyOwnerName}}</h3>
+
+            <h5 class="font-weight-bold mb-1">By {{item.propertyOwnerName}}</h5>
+
+            <h5 class="font-weight-bold mb-1">{{item.propertyType}} <span class="ms-2 text-muted"> for sale in {{item.cityName}}</span></h5>
+
+            <address class="m-0 p-0">
+              {{item.address1}}, {{item.address2}} - {{item.pincode}}
+            </address>
+
+            <div class="d-flex align-baseline py-3">
+              <div class="border-end pe-3">
+                <h5 class="text-muted mb-0">Property Type</h5>
+                <h4 class="font-weight-bold mb-0">{{item.propertyType}}</h4>
+              </div>
+              <div class="ps-3">
+                <h5 class="text-muted mb-0">Property Status</h5>
+                <h4 class="font-weight-bold mb-0">{{item.propertyStatus}}</h4>
+              </div>
+            </div>
+
+            <!--<div class="d-flex align-items-baseline">-->
+              <!--<span class="d-inline-block text-truncate" style="max-width: 470px;">-->
+                <!--Check out this residential project for sale by Bhola Satish Sant Developer ...-->
+              <!--</span>-->
+              <!--<span class="text-nowrap">Read more</span>-->
+            <!--</div>-->
+            <!--<hr class="my-2">-->
+            <!--<div class="d-flex align-items-center justify-content-between">-->
+              <!--<div>-->
+                <!--<h4 class="font-weight-bold m-0">Bhola Satish Sant Developers</h4>-->
+                <!--<h5 class="font-weight-bold m-0">Developers</h5>-->
+              <!--</div>-->
+              <!--<div class="d-flex">-->
+                <!--<button class="btn btn-success btn-sm rounded-0">View Phone</button>-->
+                <!--<button class="btn btn-secondary btn-sm rounded-0 ms-2">Contact</button>-->
+              <!--</div>-->
+            <!--</div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
