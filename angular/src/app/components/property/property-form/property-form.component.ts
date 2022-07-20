@@ -49,9 +49,7 @@ export class PropertyFormComponent implements OnInit {
     });
 
     if (this.data) {
-      console.log('Edit Data : ', this.data);
       this.commonService.getRequestWithId(`Property/get`, this.data.id).subscribe((result) => {
-        console.log('Edit Data API : ', result);
         this.selectedCityId = result.cityId;
         this.selectedPropertyBuyerId = result.propertyBuyerId;
         this.selectedPropertyOwnerId = result.propertyOwnerId;
@@ -65,41 +63,24 @@ export class PropertyFormComponent implements OnInit {
         });
       });
       this.mode = 'Update';
-      // this.selectedPropertyOwnerId = this.data.propertyOwnerId;
-      // this.selectedPropertyBuyerId = this.data.propertyBuyerId;
-      // this.selectedPropertyTypeId = this.data.propertyTypeId;
-      // this.selectedPropertyStatusId = this.data.propertyStatusId;
-      // this.selectedCityId = this.data.cityId;
-      // this.form.patchValue({
-      //   id: this.data.id,
-      //   address1: this.data.address1,
-      //   address2: this.data.address2,
-      //   pincode: this.data.pincode,
-      // });
-
-      console.log('patchValue : ', this.form.value);
-
     }
   }
 
   getPropertyStatus() {
     this.commonService.getRequest('Property/getPropertyStatus').subscribe((result) => {
       this.propertyStatusHolder = result;
-      console.log('PropertyStatusHolder : ', this.propertyStatusHolder);
     })
   }
 
   getPropertyType() {
     this.commonService.getRequest('Property/getPropertyType').subscribe((result) => {
       this.propertyTypeHolder = result;
-      console.log('PropertyTypeHolder : ', this.propertyTypeHolder);
     })
   }
 
   getCityDropdown() {
     this.commonService.getRequest('StateCity/getCityDropdown').subscribe((result) => {
       this.cityDropdownHolder = result;
-      console.log('City Holder : ', this.cityDropdownHolder);
     })
   }
 
@@ -120,7 +101,6 @@ export class PropertyFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('Form Data : ', this.form.valid);
     this.isSubmitted = true;
     if (this.form.invalid) {
       return;
@@ -133,9 +113,7 @@ export class PropertyFormComponent implements OnInit {
       propertyStatusId: this.selectedPropertyStatusId,
       cityId: this.selectedCityId,
     };
-    console.log('Form Data : ', formData);
     this.commonService.postRequest('Property/createOrUpdate', formData).subscribe((resp) => {
-      console.log('Save Resp', resp);
       this.dialogRef.close(true);
     })
 

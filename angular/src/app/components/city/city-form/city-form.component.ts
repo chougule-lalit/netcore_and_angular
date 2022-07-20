@@ -30,7 +30,6 @@ export class CityFormComponent implements OnInit {
       stateId: ['']
     });
     if (this.data) {
-      console.log('Edit Data : ', this.data);
       this.mode = 'Update';
       this.selectedStateId = this.data.stateId;
       this.form.patchValue({
@@ -48,22 +47,18 @@ export class CityFormComponent implements OnInit {
   getStateDropdown() {
     this.commonService.getRequest('StateCity/getStateDropdown').subscribe((result) => {
       this.states = result;
-      console.log('States : ', this.states);
-
     })
   }
 
   onSubmit(): void {
     this.form.patchValue({
       stateId: this.selectedStateId
-    })
-    console.log('Form Data : ', this.form.value);
+    });
     this.isSubmitted = true;
     if (this.form.invalid) {
       return;
     }
     this.commonService.postRequest('StateCity/createOrUpdateCity', this.form.value).subscribe((resp) => {
-      console.log('Save Resp', resp);
       this.dialogRef.close(true);
     })
   }

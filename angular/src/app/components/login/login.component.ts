@@ -67,16 +67,10 @@ export class LoginComponent implements OnInit {
       status: false,
       message: ''
     };
-    console.log('Login Form controls : ', this.loginForm.controls);
-    console.log('Login Form Data : ', this.loginForm.value);
-    console.log('Login Form status : ', this.loginForm.valid);
-
     if (this.loginForm.invalid) {
       return;
     }
-
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((data) => {
-      console.log('Login Resp : ', data);
       if (data.isSuccess) {
         this.router.navigate(['/home']);
       } else {
