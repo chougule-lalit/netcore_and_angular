@@ -32,16 +32,16 @@ namespace PropertySalePurchase.Application
                 var pd = await _dbContext.PropertyDetails.FirstOrDefaultAsync(x => x.Id == input.Id.Value);
                 if (pd != null)
                 {
-                    var city = await _dbContext.CityMasters.FindAsync(input.CityId);
                     _mapper.Map(input, pd);
+                    var city = await _dbContext.CityMasters.FindAsync(input.CityId);                    
                     pd.City = city;
                     await _dbContext.SaveChangesAsync();
                 }
             }
             else
             {
-                var city = await _dbContext.CityMasters.FindAsync(input.CityId);
                 var userToCreate = _mapper.Map<PropertyDetail>(input);
+                var city = await _dbContext.CityMasters.FindAsync(input.CityId);
                 if (city != null)
                     userToCreate.City = city;
                 await _dbContext.AddAsync(userToCreate);
