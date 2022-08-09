@@ -31,7 +31,6 @@ export class StatesComponent implements OnInit {
       skipCount: 0,
     };
     this.commonService.postRequest('StateCity/fetchStateMasterList', input).subscribe((result) => {
-      console.log('Get Data : ', result);
       this.dataSource = result.items;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -41,7 +40,6 @@ export class StatesComponent implements OnInit {
   add(): void {
     const dialogRef = this.dialog.open(StateFormComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed after insert : ', result);
       if (result) {
         this.getData();
       }
@@ -49,12 +47,10 @@ export class StatesComponent implements OnInit {
   }
 
   edit(editData: any): void {
-    console.log('Edit Data : ', editData);
     const dialogRef = this.dialog.open(StateFormComponent, {
       data: editData,
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed after update : ', result);
       if (result) {
         this.getData();
       }
@@ -63,7 +59,6 @@ export class StatesComponent implements OnInit {
 
   delete(id: any): void {
     this.commonService.deleteRequestWithParams('StateCity/deleteState', id).subscribe((data) => {
-      console.log('Delete Resp : ', data);
       this.getData();
     });
   }

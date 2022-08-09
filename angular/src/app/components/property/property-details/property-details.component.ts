@@ -20,7 +20,6 @@ export class PropertyDetailsComponent implements OnInit {
       skipCount: 0,
     };
     this.commonService.postRequest('Property/fetchPropertyList', input).subscribe((result) => {
-      console.log('Get Data : ', result);
       this.dataSource = result.items;
     });
   }

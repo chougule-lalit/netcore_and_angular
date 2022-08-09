@@ -40,22 +40,18 @@ export class PropertyComponent implements OnInit {
   getPropertyStatus(): void {
     this.commonService.getRequest('Property/getPropertyStatus').subscribe((result) => {
       this.propertyStatusHolder = result;
-      console.log('PropertyStatusHolder : ', this.propertyStatusHolder);
-
     });
   }
 
   getPropertyType(): void {
     this.commonService.getRequest('Property/getPropertyType').subscribe((result) => {
       this.propertyTypeHolder = result;
-      console.log('PropertyTypeHolder : ', this.propertyTypeHolder);
     });
   }
 
   getCityDropdown(): void {
     this.commonService.getRequest('StateCity/getCityDropdown').subscribe((result) => {
       this.cityDropdownHolder = result;
-      console.log('PropertyTypeHolder : ', this.propertyTypeHolder);
     });
   }
 
@@ -65,7 +61,6 @@ export class PropertyComponent implements OnInit {
       skipCount: 0,
     };
     this.commonService.postRequest('Property/fetchPropertyList', input).subscribe((result) => {
-      console.log('Get Data : ', result);
       this.dataSource = result.items;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -80,7 +75,6 @@ export class PropertyComponent implements OnInit {
       propertyStatusId: this.selectedPropertyStatus
     };
     this.commonService.postRequest('Property/fetchPropertyList', input).subscribe((result) => {
-      console.log('Get Data : ', result);
       this.dataSource = result.items;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -90,7 +84,6 @@ export class PropertyComponent implements OnInit {
   add(): void {
     const dialogRef = this.dialog.open(PropertyFormComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed after insert : ', result);
       if (result) {
         this.getData();
       }
@@ -98,12 +91,10 @@ export class PropertyComponent implements OnInit {
   }
 
   edit(editData: any): void {
-    console.log('Edit Data : ', editData);
     const dialogRef = this.dialog.open(PropertyFormComponent, {
       data: editData,
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed after update : ', result);
       if (result) {
         this.getData();
       }
@@ -112,7 +103,6 @@ export class PropertyComponent implements OnInit {
 
   delete(id: any): void {
     this.commonService.deleteRequestWithId('Property/delete', id).subscribe((data) => {
-      console.log('Delete Resp : ', data);
       this.getData();
     });
   }
